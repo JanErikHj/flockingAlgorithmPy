@@ -1,5 +1,7 @@
-import random
+"""
+Module quadtree
 
+"""
 __all__ = ['QuadTree', 'Point', 'Rectangle']
 
 # A simple class to represent a point in 2D space.
@@ -126,5 +128,11 @@ class QuadTree:
                 self.southwest.query(other, found)
                 self.southeast.query(other, found)
 
-
+    def clear(self):
+        self.points = []
+        self.divided = False
+        self.northeast = None
+        self.northwest = None
+        self.southeast = None
+        self.southwest = None
 
