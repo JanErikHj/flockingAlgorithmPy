@@ -17,7 +17,7 @@ class Entity:
     def distance_to(self, other):
         return math.sqrt((self.position.x - other.position.x) ** 2 + (self.position.y - other.position.y) ** 2)
 
-    def update(self, flock):
+    def update(self, neighbours):
         pass
 
 
