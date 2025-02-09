@@ -107,26 +107,26 @@ class QuadTree:
         # If for some reason the point could not be added, return False.
         return False
 
-    def query(self, other, found):
+    def query(self, perception_area, found):
         """
         Find all points that lie within a given range.
         'range' is a Rectangle.
         'found' is a list that will be populated with points found in the range.
         """
         # If the range does not intersect this node's boundary, return immediately.
-        if not self.boundary.intersects(other):
+        if not self.boundary.intersects(perception_area):
             return
         else:
             # Otherwise, check points at this node.
             for p in self.points:
-                if other.contains(p):
+                if perception_area.contains(p):
                     found.append(p)
             # Then, if subdivided, query the children.
             if self.divided:
-                self.northwest.query(other, found)
-                self.northeast.query(other, found)
-                self.southwest.query(other, found)
-                self.southeast.query(other, found)
+                self.northwest.query(perception_area, found)
+                self.northeast.query(perception_area, found)
+                self.southwest.query(perception_area, found)
+                self.southeast.query(perception_area, found)
 
     def clear(self):
         self.points = []
