@@ -4,6 +4,7 @@ Module quadtree
 """
 __all__ = ['QuadTree', 'Point', 'Rectangle']
 
+
 # A simple class to represent a point in 2D space.
 class Point:
     def __init__(self, x, y, data=None):
@@ -54,7 +55,6 @@ class QuadTree:
         self.southeast = None
         self.southwest = None
 
-
     def subdivide(self):
         """Subdivide the current node into four children."""
         x = self.boundary.x
@@ -63,16 +63,16 @@ class QuadTree:
         h = self.boundary.h
 
         # Create four children: northeast, northwest, southeast, southwest.
-        ne = Rectangle(x + w/2, y - h/2, w/2, h/2)
+        ne = Rectangle(x + w / 2, y - h / 2, w / 2, h / 2)
         self.northeast = QuadTree(ne, self.capacity)
 
-        nw = Rectangle(x - w/2, y - h/2, w/2, h/2)
+        nw = Rectangle(x - w / 2, y - h / 2, w / 2, h / 2)
         self.northwest = QuadTree(nw, self.capacity)
 
-        se = Rectangle(x + w/2, y + h/2, w/2, h/2)
+        se = Rectangle(x + w / 2, y + h / 2, w / 2, h / 2)
         self.southeast = QuadTree(se, self.capacity)
 
-        sw = Rectangle(x - w/2, y + h/2, w/2, h/2)
+        sw = Rectangle(x - w / 2, y + h / 2, w / 2, h / 2)
         self.southwest = QuadTree(sw, self.capacity)
 
         self.divided = True
@@ -135,4 +135,3 @@ class QuadTree:
         self.northwest = None
         self.southeast = None
         self.southwest = None
-

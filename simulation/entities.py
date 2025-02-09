@@ -1,9 +1,12 @@
 import math
 import random
+
 import pygame
+
 import simulation as sim
 
-#__all__ = ['Entity']
+
+__all__ = ['Entity']
 
 
 class Entity:
@@ -12,10 +15,16 @@ class Entity:
         self.velocity = pygame.Vector2(random.uniform(-3, 3), random.uniform(-3, 3))
 
     def collision_detect(self):
-        if self.position.x < 0 or self.position.x > sim.SCREEN_WIDTH:
-            self.velocity.x *= -1
-        if self.position.y < 0 or self.position.y > sim.SCREEN_HEIGHT:
-            self.velocity.y *= -1
+        if self.position.x <= 0:
+            self.position.x = sim.SCREEN_WIDTH
+        elif self.position.x >= sim.SCREEN_WIDTH:
+            self.position.x = 1
+        if self.position.y <= 0:
+            self.position.y = sim.SCREEN_HEIGHT
+        elif self.position.y > sim.SCREEN_HEIGHT:
+            self.position.y = 1
+
+
 
     def distance_to(self, other):
         return math.sqrt((self.position.x - other.position.x) ** 2 + (self.position.y - other.position.y) ** 2)
@@ -30,6 +39,7 @@ class Entity:
         alignment = pygame.Vector2(0, 0)
         separation = pygame.Vector2(0, 0)
 
+
         for neighbour in neighbours:
             if neighbour == self:
                 continue
@@ -37,6 +47,7 @@ class Entity:
             distance = self.distance_to(neighbour)
             cohesion += neighbour.position
             alignment += neighbour.velocity
+
 
             if distance < sim.SEPARATION_DISTANCE:
                 separation += neighbour.position

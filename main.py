@@ -1,10 +1,10 @@
 import pygame
+
 import quadtree
 import simulation as sim
 from setup import setup
 
 BLACK = (0, 0, 0)
-
 
 
 def main():
@@ -26,7 +26,6 @@ def main():
 
         # Draw entities and add to empty quadtree
         for e in flock:
-
             e.draw(screen)
             qt.insert(quadtree.Point(e.position.x, e.position.y, data=e))
 
