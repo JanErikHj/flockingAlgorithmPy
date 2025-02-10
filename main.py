@@ -30,12 +30,15 @@ def main():
             qt.insert(quadtree.Point(e.position.x, e.position.y, data=e))
 
         # Update all entities
+        next_generation = []
         for e in flock:
+
             perception = quadtree.Rectangle(e.position.x, e.position.y, sim.PERCEPTION_DISTANCE,
                                             sim.PERCEPTION_DISTANCE)
             neighbours = []
             qt.query(perception, neighbours)
-            e.update([n.data for n in neighbours])
+            next_generation.append(e.update([n.data for n in neighbours]))
+        flock = next_generation
 
         pygame.display.flip()
         clock.tick(60)
