@@ -59,7 +59,7 @@ class Entity:
 
 
             if distance < sim.SEPARATION_DISTANCE:
-                separation += neighbour.position #* (1/distance)
+                separation -= (neighbour.position - self.position)#* (1/distance)
 
         self.velocity += (cohesion / len(neighbours)) * sim.COHESION_GAIN
         self.velocity += (alignment / len(neighbours)) * sim.ALIGNMENT_GAIN

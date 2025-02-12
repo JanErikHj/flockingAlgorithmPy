@@ -2,7 +2,7 @@ import pygame
 
 import quadtree
 import simulation as sim
-from setup import setup
+from init import init
 
 BLACK = (0, 0, 0)
 
@@ -12,7 +12,7 @@ def main():
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((sim.SCREEN_WIDTH, sim.SCREEN_HEIGHT))
     pygame.display.set_caption("Flocking Simulation")
-    flock, qt = setup()
+    flock, qt = init()
 
     while running:
         # Handle events
