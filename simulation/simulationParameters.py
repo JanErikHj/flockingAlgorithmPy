@@ -1,25 +1,31 @@
-import vector
 
-__all__ = ['TOP',
-           'LEFT',
-           'SCREEN_WIDTH',
+__all__ = ['SCREEN_WIDTH',
            'SCREEN_HEIGHT',
+           'MAX_FORCE',
+           'MAX_TURN',
            'PERCEPTION_DISTANCE',
            'SEPARATION_DISTANCE',
-           'DIRECTION_GAIN',
+           'ALIGNMENT_GAIN',
            'COHESION_GAIN',
            'SEPARATION_GAIN',
            'NUM_ENTITIES',
-           'MAX_SPEED']
+           'MAX_SPEED',
+           'MIN_SPEED',
+           'STEERING_GAIN',
+           'EDGE_DISTANCE']
 
-TOP = vector.obj(x = 0, y = 1)
-LEFT = vector.obj(x = 1, y = 0)
+
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
-PERCEPTION_DISTANCE = 100
-SEPARATION_DISTANCE = 75
-DIRECTION_GAIN = 0.02
-COHESION_GAIN = 0.003
-SEPARATION_GAIN = 0.0035
-NUM_ENTITIES = 100
-MAX_SPEED = 4
+MAX_FORCE = 1
+MAX_TURN = 6
+PERCEPTION_DISTANCE = 30
+SEPARATION_DISTANCE = 10
+ALIGNMENT_GAIN = 0.5
+COHESION_GAIN =300
+SEPARATION_GAIN =1
+NUM_ENTITIES = 200
+MAX_SPEED = 0.2
+MIN_SPEED = 0.01
+STEERING_GAIN = 0.8
+EDGE_DISTANCE = 5
