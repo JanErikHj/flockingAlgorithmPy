@@ -9,11 +9,13 @@ BLACK = (0, 0, 0)
 
 def main():
     running = True
-    clock = pygame.time.Clock()
+    fps = 60.0
+    fpsclock = pygame.time.Clock()
     screen = pygame.display.set_mode((sim.SCREEN_WIDTH, sim.SCREEN_HEIGHT))
     pygame.display.set_caption("Flocking Simulation")
     flock, qt = init()
 
+    dt = 1 / fps
     while running:
         # Handle events
         for event in pygame.event.get():
@@ -37,11 +39,11 @@ def main():
                                             sim.PERCEPTION_DISTANCE)
             neighbours = []
             qt.query(perception, neighbours)
-            next_generation.append(e.update([n.data for n in neighbours]))
+            next_generation.append(e.update(dt, [n.data for n in neighbours]))
         flock = next_generation
 
         pygame.display.flip()
-        clock.tick(60)
+        dt = fpsclock.tick(fps)
 
     pygame.quit()
 
